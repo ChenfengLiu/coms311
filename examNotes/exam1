@@ -16,12 +16,25 @@ y-axis: values of f(n), g(n), which represents execution time.
 
 B. prove techniques
 big-oh:
+n0=1, c=sum of the absolute values of the coefficients of f(n)
 big-omega:
+c=ak/2, n0 is any integer greater than max(1, 2/ak(ak-1 + ... + a2 + a1 + a0))
 
 C. Application:
-ram model vs actual:
-WCET, BCET, ACET:
+I. ram model:
+	*Each simple operation (+, -, *, /, =, if, call) takes exactly one time step
+	*Each memory access takes exactly one time step.
+	*We have as much as memory as we need.
+	*No notice of whether an item is in cache or on the disk.
+II. ram model vs actual:
+	*Limited memory.
+	*Multiplication takes more time than addition.
+	*Cache access takes less time than disk access.
+III. WCET, BCET, ACET:
 O, omega, theta.
+
+IV. problem complexity & algorithmic complexity:
+problem complexity is the lower bound of algorithmic complexity
 
 D. Dominance Relationships
 
@@ -29,8 +42,39 @@ n^n >> n! >> 2^n >> n^3 >> n^2 >> nlogn >> n >> logn >> 1
 ____________________________________________________________________________________
 2. data structures
 ____________________________________________________________________________________
+A. Basic
+I. array:
+	*constant time access given the index
+	*space efficient
+	*memory locality
+II. linked list:
+	*each node contain one or more data fields
+	*each node contains a pointer field to at least one other node.
+	*a pointer that points to the head of the list
+III. array vs linked list:
+array advantages:
+	*size of an array is fixed
+	*constant time access given the index
+	*space efficient
+	*memory locality (no need for storing pointers)
+	
+linked list advatages:
+	*change size on the go (no overflow)
+	*insertion and deletion are simpler
+	*for large amount of data, moving pointers are faster than moving data.
+	*not efficient random access
+B. Basic abstract data types
+I. stack:
+	*LIFO
+	*push(x,s): insert item x at the top of stack s.
+	*pop(s): return (and remove) the top item of stack s.
+II. queue:
+	*FIFO
+	*enqueue(x,q): insert item x at the back of queue q.
+	*dequeue(q): return (and remove) the front item from queue q.
+C. Execution time for everything:
 
-
+http://bigocheatsheet.com/
 
 ____________________________________________________________________________________
 3. p-np
@@ -38,9 +82,16 @@ ________________________________________________________________________________
 A. intro concepts
 B. classes of problems
 I. Undecidable (prove halting problem is undecidable)
+	*halting problem prove:
+	
 II.Provable intractable
-III. NP (easy to check)
-IV. P (easy to solve)
+	*Hamiltonian Cycle Enumeration Problem
+III. Probably intractable 
+	*Hamiltonian Cycle Search Problem
+	*independent set problem
+IV. NP (easy to check)
+	*check if an answer is correct
+V. P (easy to solve)
 
 
 ____________________________________________________________________________________
@@ -79,7 +130,15 @@ ________________________________________________________________________________
 ____________________________________________________________________________________
 A. brute force techniques
 
-
+Backtrack-DFS(A,k):
+if A=(a1,a2,...,ak) is a solution, report it.
+else
+	k=k+1
+	compute Sk
+	while Sk!=0 do
+		ak= an element in Sk
+		Sk=Sk-ak
+		Backtrack-DFS(A,k)
 
 
 
