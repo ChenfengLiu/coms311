@@ -1,0 +1,92 @@
+topics:
+____________________________________________________________________________________
+1. big-oh
+____________________________________________________________________________________
+A. Basics
+I. definitions:
+big-oh: f(n) is O(g(n)) iff for some constant c and n0, such that f(n)<=c*g(n), for n>=n0, c>0, n0>=0.
+
+big-omega: f(n) is O(g(n)) iff for some constant c and n0, such that f(n)>=c*g(n), for n>=n0, c>0, n0>=0.
+
+big-theta: f(n) is O(g(n)) iff for some constant c1, c2, and n0, such that f(n)<=c1*g(n), and f(n)>=c*g(n), for n>=n0, c>0, n0>=0.
+
+II. graph:
+x-axis: values of n
+y-axis: values of f(n), g(n), which represents execution time.
+
+B. prove techniques
+big-oh:
+big-omega:
+
+C. Application:
+ram model vs actual:
+WCET, BCET, ACET:
+O, omega, theta.
+
+D. Dominance Relationships
+
+n^n >> n! >> 2^n >> n^3 >> n^2 >> nlogn >> n >> logn >> 1
+____________________________________________________________________________________
+2. data structures
+____________________________________________________________________________________
+
+
+
+____________________________________________________________________________________
+3. p-np
+____________________________________________________________________________________
+A. intro concepts
+B. classes of problems
+I. Undecidable (prove halting problem is undecidable)
+II.Provable intractable
+III. NP (easy to check)
+IV. P (easy to solve)
+
+
+____________________________________________________________________________________
+4. proof techniques (form is important!)
+____________________________________________________________________________________
+A. job selection problem
+B. calculus
+C. different techniques
+D. Examples in class
+I. contradiction:
+	the halting problem prove:
+	Assume that there exist an algorithm such that can solve the halting problem
+II. induction:
+	basic step: n holds
+	induction hypothesis: Assume holds for n=k
+	induction step: prove k+1 holds
+III. direct proof:
+IV. vacuous & trivial proof:
+|P|Q|P->Q| 
+|T|T|  T |
+|T|F|  F |
+|F|T|  T |
+|F|F|  T |
+vacuous: P is false, P->Q is true
+trivial: Q is true, P->Q is true
+V. contrapositve:
+|~P|~Q|~Q->~p| 
+|F |F |   T  |
+|F |T |   F  |
+|T |F |   T  |
+|T |T |   T  |
+
+
+____________________________________________________________________________________
+5. algorithmic techniques
+____________________________________________________________________________________
+A. brute force techniques
+
+
+
+
+
+
+
+
+
+
+
+
