@@ -82,16 +82,20 @@ ________________________________________________________________________________
 A. intro concepts
 B. classes of problems
 I. Undecidable (prove halting problem is undecidable)
+	definition: can prove that there are no algorithms possible to solve it.
 	*halting problem prove:
 	
 II.Provable intractable
+	definition: can prove that there is no polynominal algorithm to solve it.
 	*Hamiltonian Cycle Enumeration Problem
-III. Probably intractable 
+III. Probably intractable (NP) 
+	definition: cannot prove that there are no polynomial algorithms to solve it. All existing algorithms are non-polynominal.
 	*Hamiltonian Cycle Search Problem
 	*independent set problem
-IV. NP (easy to check)
 	*check if an answer is correct
-V. P (easy to solve)
+IV. P (easy to solve)
+	definition: there is a polynominal algorithm to solve it.
+	*find the largest number in an integer array of size 100.
 
 
 ____________________________________________________________________________________
