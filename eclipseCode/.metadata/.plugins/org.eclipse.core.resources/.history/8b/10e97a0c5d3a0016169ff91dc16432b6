@@ -1,0 +1,28 @@
+package stringsWithSameLetters;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Junk {
+
+	public static void main(String[] args) {
+		String a = "aeiou";
+		int indexA = 0;
+		int indexB = 1;
+		char one = a.charAt(indexA);
+		char two = a.charAt(indexB);
+
+		String first = a.substring(0, indexA);
+		String second = a.substring(indexA + 1, indexB);
+		String third = a.substring(indexB + 1, a.length());
+
+		System.out.println("first: " + first);
+		System.out.println("second: " + second);
+		System.out.println("third: " + third);
+
+		System.out.println(a);
+		System.out.println(first + a.charAt(indexB) + second + a.charAt(indexA) + third);
+
+	}
+
+}

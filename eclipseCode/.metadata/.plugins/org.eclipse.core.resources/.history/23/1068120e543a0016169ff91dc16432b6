@@ -1,0 +1,22 @@
+package stringsWithSameLetters;
+
+import java.util.Scanner;
+
+public class Junk {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter");
+		while(scan.hasNextLine()){
+			String a = scan.nextLine();
+			String b = scan.nextLine();
+			if(a.equals("END")&&b.equals("END")){
+				break;
+			}
+			System.out.println(a);
+			System.out.println(b);
+		}
+
+	}
+
+}

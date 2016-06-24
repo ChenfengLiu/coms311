@@ -1,0 +1,34 @@
+package stringsWithSameLetters;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Junk {
+
+	public static void main(String[] args) {
+		String a = "ahah";
+		System.out.println(a);
+		a=swap(a,0,1);
+		System.out.println(a);
+
+	}
+
+	public static String swap(String a, int indexA, int indexB) {
+		if (indexA == indexB)
+			return a;
+
+		String first = a.substring(0, indexA);
+		String second = a.substring(indexA + 1, indexB);
+		String third = a.substring(indexB + 1, a.length());
+		
+//		System.out.println("first: " + first);
+//		System.out.println("second: " + second);
+//		System.out.println("third: " + third);
+		
+
+		a = first + a.charAt(indexB) + second + a.charAt(indexA) + third;
+		System.out.println("swap: "+a);
+		return a;
+	}
+
+}

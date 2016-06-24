@@ -1,0 +1,80 @@
+package stringsWithSameLetters;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class StringsWithSameLetters {
+
+	public static void main(String[] args) {
+		ArrayList<String> arrList = new ArrayList<>();
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter");
+		while (scan.hasNextLine()) {
+			String a = scan.nextLine();
+			String b = scan.nextLine();
+			if (a.equals("END") && b.equals("END")) {
+				break;
+			}
+			arrList.add(a);
+			arrList.add(b);
+		}
+		scan.close();
+
+		for (int i = 0; i < arrList.size() / 2; i++) {
+			System.out.print("Case " + (i + 1) + ": ");
+			if (findMatch(arrList.get(2 * i), arrList.get(2 * i + 1))) {
+				System.out.println("same");
+			} else {
+				System.out.println("different");
+			}
+		}
+
+	}
+
+	public static boolean findMatch(String a, String b) {
+		if (a.length() != b.length()) {
+			return false;
+		} else {
+			boolean isMatchChar = false;
+
+			for (int i = 0; i < a.length(); i++) {
+				for (int j = i; j < a.length(); j++) {// j is always bigger or
+														// equal to i
+					isMatchChar = false;
+					if (a.charAt(i) == b.charAt(j)) {
+						isMatchChar = true;
+						swap(b, i, j);
+						break;
+					}
+				} // End inner for
+				if (!isMatchChar) {
+					return false;
+				}
+			} // End outer for
+			return true;
+		}
+
+	}
+
+	/**
+	 * Swap the two chars of a string "a", at "indexA" and "indexB". NOTE:
+	 * "indexA" is always less or equal to "indexB".
+	 * 
+	 * @param a
+	 *            - a string needs to be swapped.
+	 * @param indexA
+	 *            - the first char at indexA
+	 * @param indexB
+	 *            - the second char at indexB
+	 */
+	public static void swap(String a, int indexA, int indexB) {
+		if (indexA == indexB)
+			return;
+
+		String first = a.substring(0, indexA);
+		String second = a.substring(indexA + 1, indexB);
+		String third = a.substring(indexB + 1, a.length());
+
+		a = first + a.charAt(indexB) + second + a.charAt(indexA) + third;
+	}
+}
