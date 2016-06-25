@@ -7,8 +7,8 @@ import java.util.Scanner;
  * An ACM question: Strings with Same Letters. This program will take user
  * inputs from system.in line by line as Strings. Then, calculate whether each
  * pair of input contains the exact same letters. The result will be printed
- * after the users have done with the input. For more details about this question,
- * please view Question # H in extraCreditProblems.pdf
+ * after the users have done with the input. For more details about this
+ * question, please view Question # H in extraCreditProblems.pdf
  * 
  * @author chenfeng
  * 
@@ -57,26 +57,26 @@ public class StringsWithSameLetters {
 	 *         "b". - false otherwise.
 	 */
 	public static boolean findMatch(String a, String b) {
-		if (a.length() != b.length()) { // if String length does not match,
-										// return false
+		// if String length does not match, return false
+		if (a.length() != b.length()) {
 			return false;
 		} else {
-
-			for (int i = 0; i < a.length(); i++) {// for each char in String
-													// "a":
+			// for each char in String "a":
+			for (int i = 0; i < a.length(); i++) {
 				boolean isMatchChar = false;
-				for (int j = i; j < a.length(); j++) {// j is always bigger or
-														// equal to i
+				// j is always bigger or equal to i
+				for (int j = i; j < a.length(); j++) {
 					isMatchChar = false;
-					if (a.charAt(i) == b.charAt(j)) {// if two chars match, do
-														// swap for String "b"
+					// if two chars match, do swap for String "b"
+					if (a.charAt(i) == b.charAt(j)) {
 						isMatchChar = true;
 						b = swap(b, i, j);
 						break;
 					}
 				} // End inner for
-				if (!isMatchChar) {// if no char in String "b" matches the char
-									// in String "a", return false
+					// if no char in String "b" matches the char in String "a",
+					// return false
+				if (!isMatchChar) {
 					return false;
 				}
 			} // End outer for
@@ -97,7 +97,8 @@ public class StringsWithSameLetters {
 	 *            - the second char at indexB
 	 */
 	public static String swap(String a, int indexA, int indexB) {
-		if (indexA == indexB) // swap is unnecessary when indexA == indexB
+		// swap is unnecessary when indexA == indexB
+		if (indexA == indexB)
 			return a;
 		// cut the string into 3 parts not including the two chars.
 		String first = a.substring(0, indexA);
