@@ -1,3 +1,0 @@
-INDEX VERSION 1.127+/home/chenfeng/Documents/coms311/coms311/eclipseCode/.metadata/.plugins/org.eclipse.jdt.core
-567165250.index
-154003658.index
