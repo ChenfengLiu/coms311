@@ -109,7 +109,7 @@ I. contradiction:
 	the halting problem prove:
 	Assume that there exist an algorithm such that can solve the halting problem
 II. induction:
-	basic step: n holds
+	basic step: n = min, holds
 	induction hypothesis: Assume holds for n=k
 	induction step: prove k+1 holds
 III. direct proof:
