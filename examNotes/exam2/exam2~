@@ -1,0 +1,56 @@
+1. Big-Oh
+A. Basics
+	I: tighter and weaker bounds
+B. Application to Algorithms
+	I: instances and runtime graphs
+	II: WCET, BCET, ACET
+	III: Big-oh of code segments
+C. Big-Oh in real world
+	I: real code time (matrix mult)
+	II: effect of cache/piplelining, etc.
+	III: choosing algo in real-world vs big-Oh
+		*constants might matter more in real world than in big-Oh
+		*easier implementation might make a difference
+
+2. Data Structures
+A. Basics
+	I: Arrays (sorted/unsorted)
+	II: Linked lists (singly/doubly, sorted/unsorted)
+	III: comparison of arrays and linked lists
+B. Basic Abstract Data Types
+	I: Stack, Queue (implementations using array/linked lists)
+	II: comparison of operations of different implementation of stack/queue
+	III: reasons for difference
+	IV: Dictionaries
+	V: Hash Tables
+C. Other Abstract Data Types (ADTs)
+	I: Binary Search Trees (BST)
+	II: Priority Search Queues
+	III: Heap implementation
+D. Storing points, graphs, sets, etc
+	I: graphs
+	II: sets
+E. Big-Oh of operations on data structures
+F. Algorithms on data structures (BST, Heap, etc)
+
+3. Proof Techniques
+A. Different Techniques
+	I: contradiction
+	II: induction
+	III: direct proof (deduction proof)
+	IV: trivial/vacuous
+	V: contrapositive
+B. Proofs in class
+	I: Halting problem is undecidable
+	II: VC <= p IS and IS <= p VC
+	III: setlect jobs satisfies greedy choice + opt substructuring
+4. Algorithmic Techniques
+A. Brute Force Techniques
+	I: search space for different problems
+	II: recursion tree for brute force approach
+	III: backtrack algorithm from textbook
+	IV: iterative way to generate all subsets
+	V: recursive way to generate all subsets
+	VI: recursive way to generate all perms
+	VII: recursive way to generate subsets with size k
+	
