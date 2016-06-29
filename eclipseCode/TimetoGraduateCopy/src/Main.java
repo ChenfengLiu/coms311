@@ -1,9 +1,7 @@
-package timetoGraduate;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TimetoGraduate {
+public class Main {
 
 	private static int count = 0;
 	private static int min = Integer.MAX_VALUE;
@@ -17,7 +15,7 @@ public class TimetoGraduate {
 			int numClass, maxClass;
 			numClass = scan.nextInt();
 			maxClass = scan.nextInt();
-			
+
 			if (numClass == -1 && numClass == -1) {
 				scan.close();
 				break;

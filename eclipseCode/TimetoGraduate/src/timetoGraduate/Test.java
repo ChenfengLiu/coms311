@@ -1,6 +1,7 @@
 package timetoGraduate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Test {
 	private static int count = 0;
@@ -19,31 +20,35 @@ public class Test {
 		//
 		// System.out.println(permission(a,semester,finished));
 
-		// int[] arr = { 2, 3, 4 };
-		// int k = 3;
-		// int numRows = combinationCal(arr.length, k);
-		// System.out.println("numRows: " + numRows);
-		//
-		// int[] answer = new int[k];
-		// int[][] finalResult = new int[numRows][k];
-		// finalResult = combination(arr, k, 0, answer, finalResult);
-		// System.out.println(Arrays.deepToString(finalResult));
+//		 int[] arr = { 0, 1, 2, 3 };
+//		 int k = 1;
+//		 int numRows = combinationCal(arr.length, k);
+//		 System.out.println("numRows: " + numRows);
+//		
+//		 int[] answer = new int[k];
+//		 int[][] finalResult = new int[numRows][k];
+//		 finalResult = combination(arr, k, 0, answer, finalResult);
+//		 System.out.println(Arrays.deepToString(finalResult));
 		//
 		// boolean[] finished = { true, true, true };
 		// System.out.println(isDone(finished));
 
-		Course a = new Course(0, "F", 0, new int[0]);
-		Course b = new Course(1, "S", 0, new int[0]);
-		Course c = new Course(2, "S", 2, new int[] { 0, 1 });
-		Course d = new Course(3, "B", 1, new int[] { 2 });
+		Course a = new Course(0, "B", 0, new int[0]);
+		Course b = new Course(1, "B", 0, new int[0]);
+		Course c = new Course(2, "B", 0, new int[0]);
+		Course d = new Course(3, "B", 3, new int[] { 0, 1, 2 });
+		Course e = new Course(4, "B", 1, new int[] { 2 });
+		Course f = new Course(5, "B", 1, new int[] { 4 });
 		ArrayList<Course> courseList = new ArrayList<>();
 		courseList.add(a);
 		courseList.add(b);
 		courseList.add(c);
 		courseList.add(d);
-		boolean finished[] = { false, false, false, false };
+		courseList.add(e);
+		courseList.add(f);
+		boolean finished[] = { false, false, false, false, false, false };
 		int semester = 0;
-		int maxClass = 6;
+		int maxClass = 2;
 		nextSemester(courseList, finished, semester, maxClass);
 		System.out.println("The minimum number of semesters required to graduate is " + min);
 
@@ -64,6 +69,7 @@ public class Test {
 	 */
 	private static void nextSemester(ArrayList<Course> courseList, boolean[] finished, int semester, int maxClass) {
 		if (isDone(finished)) {
+			System.out.println("1st if: semester: " + semester);
 			if (semester < min)
 				min = semester;
 		} else {
@@ -76,23 +82,45 @@ public class Test {
 			// if # of candidates is less than max courses can take, finish
 			// those courses.
 			if (candidateList.size() <= maxClass) {
+				//make move
 				for (int i = 0; i < candidateList.size(); i++) {
 					finished[candidateList.get(i).getName()] = true;
+					System.out.println("if make move: " + candidateList.get(i).getName());
 				}
 				semester = semester + 1;
+				System.out.println("if: Semester: " + semester);
+				//Recursion
 				nextSemester(courseList, finished, semester, maxClass);
+				//unmake move
+				for (int i = 0; i < candidateList.size(); i++) {
+					finished[candidateList.get(i).getName()] = false;
+				}
+				semester = semester - 1;
 			} else {
 				int rows = combinationCal(candidateList.size(), maxClass);
 				int[][] allCombination = new int[rows][maxClass];
 				int[] oneCombination = new int[maxClass];
+				count = 0;
 				allCombination = combination(candidates, maxClass, 0, oneCombination, allCombination);
+				System.out.println("allCombination: " + Arrays.deepToString(allCombination));
 				// for each combination, simulate next semester.
 				for (int i = 0; i < rows; i++) {
+					//make move
 					for (int j = 0; j < maxClass; j++) {
 						finished[allCombination[i][j]] = true;
+						System.out.println("else make move: " + allCombination[i][j]);
 					}
 					semester = semester + 1;
+					System.out.println("else: Semester: " + semester);
+					//Recursion
 					nextSemester(courseList, finished, semester, maxClass);
+					
+					//unmake move
+					for (int j = 0; j < maxClass; j++) {
+						finished[allCombination[i][j]] = false;
+					}
+					semester = semester - 1;
+					
 				}
 			}
 		}
@@ -106,6 +134,7 @@ public class Test {
 	 * @return - true if all the courses have been finished, false otherwise.
 	 */
 	private static boolean isDone(boolean[] finished) {
+		System.out.println(Arrays.toString(finished));
 		for (int i = 0; i < finished.length; i++) {
 			if (finished[i] == false)
 				return false;
