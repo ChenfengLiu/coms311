@@ -1,0 +1,81 @@
+____________________________________________________________________________________
+1. Data Structures
+____________________________________________________________________________________
+
+B. Basic Abstract Data Types
+	I: Dictionaries
+		Imp: sorted array.
+		Search(D,k)
+		Insert(D,x)
+		Delete(D,x)
+		Max(D), Min(D)
+		Predecessor(D,k), Successor(D,k)
+	II: Hash Tables
+		search one key:  
+		by chainning, O(n+m),go through n entries, and find the key from m keys.
+		by open addressing: number of entries can be bigger than the number of objects. No pointers need compare to chainning.
+
+C. Other Abstract Data Types (ADTs)
+	I: Binary Search Trees (BST)
+		Find arbitrary key in BST: O(logn) or O(h)
+		Traversal: O(n) go through every item
+		Insert/delete: O(h) or O(logn)
+	II: Priority Search Queues
+Priority-queue: find-min, delete-min, insert
+	imp: Heap: find-min is O(1), delete-min is O(logn), insert is O(logn)
+
+	III: Heap implementation
+		
+		parent position = i
+		child position = 2i or 2i+1
+
+		parent position = floor(child position/2)
+		
+		linked list (unsorted): 
+			Find arbitrary key in heap tree: O(n)
+			insertion, deletion: O(1)
+			Find min/max: O(1)
+		linked list (sorted):
+			insertion: O(n), have to find the correct spot for the key.
+D. Storing points, graphs, sets, etc
+	I: graphs
+	II: sets
+E. Big-Oh of operations on data structures
+F. Algorithms on data structures (BST, Heap, etc)
+	I: Rabin-Karp Algorithm: using hash table to search for a string(size m) in a large string(size n)
+		WCET: O(mn)
+		BCET: O(n+m)
+		Calculation: sum = sum(base(position) * asciiValue), compare each sum.
+		
+		
+____________________________________________________________________________________
+2. Proof Techniques
+____________________________________________________________________________________
+A. Different Techniques
+	I: contradiction
+		RIP (required to prove):...
+		Assume...
+		...
+		From ... and (some know fact), we arrived at a contradiction.
+		Therefore our assumption is false and ...
+		QED 
+
+____________________________________________________________________________________
+4. Algorithmic Techniques
+____________________________________________________________________________________
+A. Divide and Conquer
+	I: recurrence formula
+	II: divide and conquer approach
+	III: mergesort + analysis
+	IV: quicksort + analysis
+	V: max
+B. Recurrence Formulae
+	I: general form of recurrence formula & masters theorem
+	II: how to derive recurrence tree, term for each level, sum
+	III: 2T(n/2) + c
+	IV: T(n/2) + cn
+	V: 3T(n/2) + cn
+	VI: 2T(n/2) + cn^2
+	VII: 5T(n/2) + cn^2
+	
+	

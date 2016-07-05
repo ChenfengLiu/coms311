@@ -1,0 +1,35 @@
+Given T(n) = a*T(n/b) + g(n)
+
+Case 1: Leaves dominates
+
+n^logb(a) >> n^logb(a-e) >> f(n)
+
+if f(n) = O(n^logb(a-e)), where e>0
+Then, T(n) = big_Theta(n^logb(a))
+
+Ex. T(n) = 2*T(n/2) + log(n)
+	n^log2(2) = n
+	f(n) = log(n) = big_Oh(n^e), e>0
+	Thus,T(n) = big_Theta(n)
+Ex. binary Search: T(n) = T(n/2) + c
+
+
+Case 2: both terms similar
+
+if f(n) = big_Theta(n^logb(a))
+then T(n) = big_Theta(n^logb(a) * logn)
+
+Ex. Mergesort: T(n) = 2T(n/2) + cn
+
+
+Case 3: Root dominates
+
+f(n) >> n^logb(a+e) >> n^logb(a)
+
+if f(n) = big_Omega(n^logb(a+e)), where e>0
+
+if af(n/b) <= cf(n), for c<1, 
+
+then T(n) = big_Theta(f(n))
+
+why do we need the master theorem?

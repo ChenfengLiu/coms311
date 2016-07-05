@@ -1,0 +1,32 @@
+
+Pseudocode (recursive):
+
+depthFirstSearch(Graph, vertex){
+	visited[vertex] = true;
+
+	for all edges from v to w in G.adjacentEdges(v) do
+		if(visi)
+			depthFirstSearch(Graph w);
+}
+
+Pseudocode (iterative using stack):
+
+depthFirstSearch(Graph, vertex){
+
+	Stack S = {empty}
+	for (each vertex u in visited[]){ u = false; }
+
+	push(S, vertex); //push the first vertex onto stack
+
+	while(S != empty) do{
+		vertex a = pop(S);
+		if(not visited[a]){
+			visited[a] = true;
+			for (each neighbour vertex b of a){
+				if(!visited[b]) push(S, b);
+			}
+		}//end if	
+	}//end while loop
+}
+
+
