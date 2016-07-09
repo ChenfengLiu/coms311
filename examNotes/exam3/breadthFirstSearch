@@ -1,1 +1,28 @@
-Pseudocode (recursive):
+Pseudocode (queue):
+
+
+Application:
+
+Connected Components:
+
+
+
+Two-Coloring Graphs:
+
+twoColor(graph g){
+
+	for(each vertices in graph g)
+		color[v] = uncolored;
+	
+	bipartite = true;
+	
+	initialize_search(g);
+	
+	for(each verteces v in graph g){
+		if(!discovered[v]){
+			color[v] = while;
+			bfs(g,v);
+		}
+	}
+
+}

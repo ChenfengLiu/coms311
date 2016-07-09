@@ -1,35 +1,53 @@
-Given T(n) = a*T(n/b) + g(n)
+Given T(n) = a*T(n/b) + f(n)
+
+a ϵ ℕ: # of small pieces you break the problem into.
+b ϵ ℕ: size of smaller pieces is n/b.
+f:ℕ -> ℕ: f(n) is time to combin each sub-problem solution into complete result.
+T:ℕ -> ℕ: time it takes to solve problem of size n.
+
+T(n) = a^k*T(1) + SUM(k-1, i=0, f(n/b^i)), where k=logb(n)
+
 
 Case 1: Leaves dominates
 
-n^logb(a) >> n^logb(a-e) >> f(n)
+leave dominates: n^logb(a) >> n^(logb(a)-ε)>> f(n)
 
-if f(n) = O(n^logb(a-e)), where e>0
+if f(n) = big_Oh(n^(logb(a)-ε)), where ε>0
 Then, T(n) = big_Theta(n^logb(a))
 
-Ex. T(n) = 2*T(n/2) + log(n)
-	n^log2(2) = n
-	f(n) = log(n) = big_Oh(n^e), e>0
-	Thus,T(n) = big_Theta(n)
-Ex. binary Search: T(n) = T(n/2) + c
+	Ex. T(n) = 2*T(n/2) + log(n)
+		n^log2(2) = n
+		f(n) = log(n) = big_Oh(n^ε), ε>0
+		Thus,T(n) = big_Theta(n)
+
+	Ex. binary Search: T(n) = T(n/2) + c
 
 
-Case 2: both terms similar
+Case 2: all terms are similar
 
 if f(n) = big_Theta(n^logb(a))
 then T(n) = big_Theta(n^logb(a) * logn)
 
-Ex. Mergesort: T(n) = 2T(n/2) + cn
+	Ex. Mergesort: T(n) = 2T(n/2) + cn
 
 
 Case 3: Root dominates
 
-f(n) >> n^logb(a+e) >> n^logb(a)
+root dominates: f(n) >> n^(logb(a)+ε) >> n^logb(a)
 
-if f(n) = big_Omega(n^logb(a+e)), where e>0
-
-if af(n/b) <= cf(n), for c<1, 
-
+if f(n) = big_Omega(n^(logb(a)+ε)), where ε>0
+and if af(n/b) <= cf(n), for c<1,
 then T(n) = big_Theta(f(n))
+	
+	Ex.
 
-why do we need the master theorem?
+
+A. why do we need the master theorem? How is master theorem useful?
+It allows us to quickly figure out the big-oh of divide and conquer algorithms.
+
+B. What two terms are compared in the master theorem?
+root and leaves of the recurrence tree.
+f(n)	n^(logb(a))
+
+C.
+

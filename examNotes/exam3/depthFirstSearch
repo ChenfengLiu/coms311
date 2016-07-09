@@ -4,8 +4,8 @@ Pseudocode (recursive):
 depthFirstSearch(Graph, vertex){
 	visited[vertex] = true;
 
-	for all edges from v to w in G.adjacentEdges(v) do
-		if(visi)
+	for all edges from vertex to w in G.adjacentEdges(v) do
+		if(!visited[w])
 			depthFirstSearch(Graph w);
 }
 
