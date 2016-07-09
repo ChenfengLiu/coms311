@@ -3,6 +3,16 @@ package lightSwitches;
 import java.math.BigInteger;
 import java.util.Scanner;
 
+/**
+ * This program takes many sets of integers from system.in. Each set contains
+ * three integers: # of light bulbs, the time since the bulbs are turned on, and
+ * the bulb ID (number). Then the program will return if the light bulb with the
+ * bulb ID (number) is "On" or "Off". For more details about this question,
+ * please view Question # E in extraCreditProblems.pdf
+ * 
+ * @author chenfeng
+ *
+ */
 public class LightSwitches {
 
 	private static int count = 0;
@@ -11,7 +21,7 @@ public class LightSwitches {
 	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
-		
+
 		while (scan.hasNextLine()) {
 			BigInteger numBulb = new BigInteger(scan.next());
 			BigInteger time = new BigInteger(scan.next());
@@ -41,7 +51,7 @@ public class LightSwitches {
 		BigInteger simTime = new BigInteger("1");
 		BigInteger one = new BigInteger("1");
 		while (simTime.compareTo(time) <= 0) {
-			
+
 			if (isExactDivision(theBulb, simTime)) {
 				count = count + 1;
 			}
