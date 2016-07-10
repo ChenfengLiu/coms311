@@ -1,0 +1,71 @@
+____________________________________________________________________________________
+1. Data Structures
+____________________________________________________________________________________
+A. Storing points, graphs, sets, etc
+	I: graphs
+	II: sets
+____________________________________________________________________________________
+2. Graphs (unweighted)
+____________________________________________________________________________________
+A. BFS
+	I: connected components
+	II: two-color problem
+
+B. DFS on undirected graphs (tree and back edges)
+	I: articulation vertices (parent, root, bridge cut-nodes)
+
+C. DFS on directed graphs (tree, back, cross, and forward edges)
+	I: topological sorting/ DAG
+	II: strongly connected components
+	III: following algorithm by marking graph
+
+D. big-oh of graph algoritms
+____________________________________________________________________________________
+3. P-NP
+____________________________________________________________________________________
+A. Intro Conceptes
+
+B. Classes of problems
+	I: Undecidable (prove Halting problem is undecidable)
+	II: P
+	III: NP
+
+C. Reduction:
+	I: optimization, search, decision and reductions
+	II: definition of plynominal-time reduction & notation
+	III: conclusions (or implications of) from Y <=p X
+	IV: transitive property ( x <=p y, y <=p z, then x <=p z)
+	V: how to prove x <=p y (3 steps)
+	VI: interval sched <=p IS
+	VII: vector cover <=p IS
+	VIII: IS <=p vector cover
+	IX: bipartite matching <=p IS
+____________________________________________________________________________________
+4. Proof Techniques
+____________________________________________________________________________________
+A. Contrapositive
+B. Proofs in class
+	I: VC <=p IS and IS <=p VC
+	
+____________________________________________________________________________________
+5. Algorithmic Techniques
+____________________________________________________________________________________
+A. Divide and Conquer
+	I: recurrence formula
+	II: divide and conquer approach
+	III: mergesort + analysis
+	IV: quicksort + analysis
+	V: max
+	VI: max sum of sequence !?
+	VII: counting inversions !?
+
+B. Recurrence Formulae
+	I: general form of recurrence formula & masters theorem
+	II: how to derive recurrence tree, term for each level, sum
+	III: 2T(n/2) + c
+	IV: T(n/2) + cn
+	V: 3T(n/2) + cn
+	VI: 2T(n/2) + cn^2
+	VII: 5T(n/2) + cn^2
+	
+	
