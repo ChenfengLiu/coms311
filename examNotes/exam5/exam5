@@ -1,0 +1,56 @@
+____________________________________________________________________________________
+1. Graphs (unweighted)
+____________________________________________________________________________________
+A. DFS on undirected graphs (tree and back edges)
+	I: articulation vertices (parent, root, bridge cut-nodes)
+
+B. DFS on directed graphs (tree, back, cross, and forward edges)
+	I: topological sorting/ DAG
+	II: strongly connected components
+	III: following algorithm by marking graph
+
+C. big-oh of graph algoritms
+____________________________________________________________________________________
+1. Graphs (weighted)
+____________________________________________________________________________________
+A. MST
+	I: prims
+	II: kruskals
+	III: Union-find data structure
+	IV: reverse delete
+	V: proofs for prims and kruskals
+	VI: big-O of prims and kruskals
+
+B. Shortest Paths
+	I: Dijkstras
+	II: proof
+	III: big-O
+
+C. All Pairs Shortest
+	I: Dijkstras for all nodes
+	II: Floyd-Warshalls: how algo works + big-O
+	III: Floyd-Warshall's recurrence formula
+____________________________________________________________________________________
+3. P-NP
+____________________________________________________________________________________
+A. Reduction:
+	I: optimization, search, decision and reductions
+	II: definition of plynominal-time reduction & notation
+	III: conclusions (or implications of) from Y <=p X
+	IV: transitive property ( x <=p y, y <=p z, then x <=p z)
+	V: how to prove x <=p y (3 steps)
+	VI: interval sched <=p IS, construction and proofs
+	VII: vector cover <=p IS, construction and proofs
+	VIII: IS <=p vector cover, construction and proofs
+	IX: bipartite matching <=p IS, construction and proofs
+
+	I: yes -> yes, no -> no, false positives, false negatives
+	II: given some reduction - ability to prove/disprove
+____________________________________________________________________________________
+4. Proof Techniques
+____________________________________________________________________________________
+A. Contrapositive
+B. Proofs in class
+	I: VC <=p IS and IS <=p VC
+C. Induction
+D. Direct proof

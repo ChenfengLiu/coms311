@@ -1,0 +1,45 @@
+____________________________________________________________________________________
+Prim's
+____________________________________________________________________________________
+A. pseudocode:
+	Prim-MST(G):
+		select an arbitrary vertex s to start the tree from.
+		while(there are still nontree vertex)
+			Selet a min weight edge between a tree and nontree vertex
+			Add the edge and vertex to the tree T.
+
+____________________________________________________________________________________
+Kruskal's
+____________________________________________________________________________________
+A. pseudocode:
+	1. Kruskal-MST(G):
+		Put the edges in a priority queue ordered by weight.
+		count = 0
+		while(count < n-1) do
+			get next edge(v,w)
+			if(component(v) != component(w))
+				add to tree T
+				merge component(v) and component(w)
+
+	2. Kruskal-MST(G):
+		sort edges by weight.
+		loop over edge u,v
+			find component of u
+			find component of v
+			if not same merge
+
+____________________________________________________________________________________
+Dijkstra's
+____________________________________________________________________________________
+A. pseudocode:
+	1. ShortestPath-Dijkstra(G, s, t):
+		known = {s}
+		for each i in dist[i] = infinity
+		for each edge (s, v), dist[v] = w(s, v)
+		last = s
+		while(last != t)
+			select next v, the unknown vertex minimizing dist[v]
+			for each edge(next v, x)
+				dist[x] = min[dist[x], dist[next v] + w(next v, x)]
+				last = next v
+				known = known + next v

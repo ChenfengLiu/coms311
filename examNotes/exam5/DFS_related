@@ -1,0 +1,71 @@
+____________________________________________________________________________________
+DFS Articulation Vertex
+____________________________________________________________________________________
+A. detecting node v:
+	I. Root cut node:
+		if(parent[v] < 1 && tree_out_degree[v] > 1), then root cut node.
+
+	II. Bridge cut node:
+		if(RA[v] == v && tree_out_degree[v] > 0), then V is bridge cut node.
+		V's parent will also be bridge cut node.
+
+	III. Parent cut node:
+		if(RA[v] == parent[v] && !root), then parent cut node.
+
+B. detecting edge e:
+	I. at entry to node v:
+		RA[v] = v
+	
+	II. at detecting an edge e(x,y):
+		if(e is back edge && parent[x] != y)
+			if(Tentry[y] < Tentry[RA[x]])
+				RA[x] = y
+
+	III. on exit from node v:
+		time_V = entry_time[RA[v]]
+		time_parent = entry_time[RA[parent[v]]]
+		if(time_v < time_parent)
+			RA[parent[v]] = RA[V]
+____________________________________________________________________________________
+Topological Sort:
+____________________________________________________________________________________
+A. pseudocode:
+	TopoSort:
+		Stack S;
+		1. call DFS to compute finishing time for each vertex v.
+		2. As each vertex is processed, insert it onto stack S.
+		3. pop stack S till empty.
+
+B. detecting edge (x -> y):
+	I. back edge:
+		if(discovered[y] && !processed[y]), then back edge.
+	
+	II. cross edge:
+		if(processed[y] && Tentry[y] < Tentry[x]), then cross edge.
+
+	III. forward edge:
+		if(processed[y] && Tentry[y] > Tentry[x]), then forward edge.
+
+____________________________________________________________________________________
+Strongly Connected Components:
+____________________________________________________________________________________
+A. detecting edge (x -> y):
+	I. back edge:
+		if y is discovered and not processed, then back edge.
+	
+	II. cross edge:
+		if y is processed, and Tentry[y] < Tentry[x], then cross edge.
+	
+	III. forward edge:
+		if y is processed, and Tentry[y] > Tentry[x], then forward edge.
+
+
+
+
+
+
+
+
+
+
+
