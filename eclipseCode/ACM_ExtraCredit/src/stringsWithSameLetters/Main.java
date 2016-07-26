@@ -1,6 +1,5 @@
 package stringsWithSameLetters;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -14,39 +13,32 @@ import java.util.Scanner;
  * 
  * 
  */
-public class StringsWithSameLetters {
+public class Main {
 
 	public static void main(String[] args) {
+		int counter = 0;
 
-		ArrayList<String> arrList = new ArrayList<>();
 		// Obtain input data from the user
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Please enter you input down below: ");
-		while (scan.hasNextLine()) {
-			String a = scan.nextLine();
-			while(a.equals("")){
-				a = scan.nextLine();
-			}
+
+		while (scan.hasNext()) {
 			
-			String b = scan.nextLine();
+			String a = scan.next();
+			String b = scan.next();
+			
 			if (a.equals("END") && b.equals("END")) {
 				break;
 			}
-			arrList.add(a);
-			arrList.add(b);
-			
-		}
-		scan.close();
-
-		// find match for each pair of Strings
-		for (int i = 0; i < arrList.size() / 2; i++) {
-			System.out.print("Case " + (i + 1) + ": ");
-			if (findMatch(arrList.get(2 * i), arrList.get(2 * i + 1))) {
+			counter = counter + 1;
+			System.out.print("Case " + counter + ": ");
+			if (findMatch(a, b)) {
 				System.out.println("same");
 			} else {
 				System.out.println("different");
 			}
+
 		}
+		scan.close();
 
 	}
 
