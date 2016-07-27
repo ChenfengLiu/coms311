@@ -14,10 +14,8 @@ public class MorseCodeTree {
 		// add root node to tree
 		tree.add(new treeNode("start"));
 
-		// index 1, 2, 3, 4, 5, 6, 7, 8, 9,
-		// 10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26;
-		// treeNode e, t, i, a, n, m, s, u, r, w, d, k, g, o, h, v, f, l, p, j,
-		// b, x, c, y, z, q;
+		// index    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26;
+		// treeNode e, t, i, a, n, m, s, u, r, w, d, k, g, o, h, v, f, l, p, j, b, x, c, y, z, q;
 
 		// assign values to each node
 		String values = "etianmsurwdkgohvflpjbxcyzq";
@@ -88,6 +86,24 @@ public class MorseCodeTree {
 		tree.get(11).right = tree.get(22);
 		tree.get(12).right = tree.get(24);
 		tree.get(13).right = tree.get(26);
+		
+		//assign if left child
+		tree.get(1).isLeftChild = true;
+		tree.get(3).isLeftChild = true;
+		tree.get(5).isLeftChild = true;
+		
+		tree.get(7).isLeftChild = true;
+		tree.get(9).isLeftChild = true;
+		tree.get(11).isLeftChild = true;
+		tree.get(13).isLeftChild = true;
+		
+		tree.get(15).isLeftChild = true;
+		tree.get(17).isLeftChild = true;
+		tree.get(18).isLeftChild = true;
+		tree.get(19).isLeftChild = true;
+		tree.get(21).isLeftChild = true;
+		tree.get(23).isLeftChild = true;
+		tree.get(25).isLeftChild = true;
 
 	}
 
@@ -108,6 +124,15 @@ public class MorseCodeTree {
 		return answer;
 
 	}
+	
+	public String TextToMorse(String text){
+		String answer = "";
+			for(int i = 0; i< text.length(); i++){
+				String oneletter = text.charAt(i)+"";
+				answer += findMCode(oneletter) + "_";
+			}
+		return answer;
+	}
 
 	private String findLetter(String letter) {
 		treeNode target = tree.get(0);
@@ -125,16 +150,48 @@ public class MorseCodeTree {
 		}
 	}
 
+	private String findMCode(String oneletter){
+		String answer = "";
+		treeNode target = tree.get(0);
+		for(int i = 1; i < 27; i++){
+			target = tree.get(i);
+			if(target.getVal().equals(oneletter)){
+				if(target.isLeftChild()){
+					answer = answer + ".";
+					break;
+				}else{
+					answer = answer + "-";
+					break;
+				}
+			}
+		}
+		if(answer.equals("")){
+			return "!";
+		}else{
+			while(target.getParent() != null && !target.getParent().getVal().equals("start")){
+				target = target.getParent();
+				if(target.isLeftChild()){
+					answer = "." + answer;
+				}else{
+					answer = "-" + answer;
+				}
+			}//end while loop
+		}//end if-else
+		
+		return answer;
+	}
 	class treeNode {
 
 		private treeNode parent, left, right;
 		private String val;
+		private boolean isLeftChild;
 
 		public treeNode() {
 			this.parent = null;
 			this.left = null;
 			this.right = null;
 			this.val = null;
+			this.isLeftChild = false;
 		}
 
 		public treeNode(String val) {
@@ -142,6 +199,7 @@ public class MorseCodeTree {
 			this.left = null;
 			this.right = null;
 			this.val = val;
+			this.isLeftChild = false;
 		}
 
 		public treeNode getParent() {
@@ -159,5 +217,10 @@ public class MorseCodeTree {
 		public String getVal() {
 			return val;
 		}
+
+		public boolean isLeftChild() {
+			return isLeftChild;
+		}
+
 	}
 }
