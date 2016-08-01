@@ -22,16 +22,14 @@ public class Main {
 
 		Scanner scan = new Scanner(System.in);
 
-		while (scan.hasNextLine()) {
+		while (scan.hasNext()) {
 			BigInteger numBulb = new BigInteger(scan.next());
 			BigInteger time = new BigInteger(scan.next());
 			BigInteger theBulb = new BigInteger(scan.next());
 			time = time.remainder(numBulb);
-
-			System.out.println("numBulb: " + numBulb);
-			System.out.println("time: " + time);
-			System.out.println("the bulb: " + theBulb);
-
+			
+//			System.out.println(numBulb + " " + time + " " + theBulb);
+			
 			numCase = numCase + 1;
 			count = 0;
 
@@ -62,10 +60,8 @@ public class Main {
 	private static boolean isExactDivision(BigInteger n, BigInteger k) {
 		BigInteger one = new BigInteger("1");
 		if (n.remainder(k).compareTo(one) >= 0) {
-			System.out.println("false");
 			return false;
 		} else {
-			System.out.println("true");
 			return true;
 		}
 	}

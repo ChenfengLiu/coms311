@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MorseCodeTree {
 	private ArrayList<treeNode> tree;
@@ -14,8 +13,10 @@ public class MorseCodeTree {
 		// add root node to tree
 		tree.add(new treeNode("start"));
 
-		// index    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26;
-		// treeNode e, t, i, a, n, m, s, u, r, w, d, k, g, o, h, v, f, l, p, j, b, x, c, y, z, q;
+		// index 1, 2, 3, 4, 5, 6, 7, 8, 9,
+		// 10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26;
+		// treeNode e, t, i, a, n, m, s, u, r, w, d, k, g, o, h, v, f, l, p, j,
+		// b, x, c, y, z, q;
 
 		// assign values to each node
 		String values = "etianmsurwdkgohvflpjbxcyzq";
@@ -86,17 +87,17 @@ public class MorseCodeTree {
 		tree.get(11).right = tree.get(22);
 		tree.get(12).right = tree.get(24);
 		tree.get(13).right = tree.get(26);
-		
-		//assign if left child
+
+		// assign if left child
 		tree.get(1).isLeftChild = true;
 		tree.get(3).isLeftChild = true;
 		tree.get(5).isLeftChild = true;
-		
+
 		tree.get(7).isLeftChild = true;
 		tree.get(9).isLeftChild = true;
 		tree.get(11).isLeftChild = true;
 		tree.get(13).isLeftChild = true;
-		
+
 		tree.get(15).isLeftChild = true;
 		tree.get(17).isLeftChild = true;
 		tree.get(18).isLeftChild = true;
@@ -112,10 +113,11 @@ public class MorseCodeTree {
 	}
 
 	public String MorseToText(String morseCode) {
+		morseCode = organizeMCode(morseCode);
 		String answer = "";
-		String[] words = morseCode.split("!");
+		String[] words = morseCode.split("/");
 		for (int i = 0; i < words.length; i++) {
-			String[] letters = words[i].split("_");
+			String[] letters = words[i].split(" ");
 			for (int j = 0; j < letters.length; j++) {
 				answer = answer + findLetter(letters[j]);
 			}
@@ -124,62 +126,109 @@ public class MorseCodeTree {
 		return answer;
 
 	}
-	
-	public String TextToMorse(String text){
+
+	public String TextToMorse(String text) {
+		text = text.toLowerCase();
 		String answer = "";
-			for(int i = 0; i< text.length(); i++){
-				String oneletter = text.charAt(i)+"";
-				answer += findMCode(oneletter) + "_";
-			}
+		for (int i = 0; i < text.length(); i++) {
+			String oneletter = text.charAt(i) + "";
+			answer += findMCode(oneletter) + " ";
+		}
 		return answer;
 	}
 
-	private String findLetter(String letter) {
+	// helper for MorseToText(String text) method
+	private String organizeMCode(String mCode) {
+
+		mCode = mCode.trim();
+		int lastIndex = mCode.length()-1;
+		for (int i = 0; i < mCode.length(); i++) {
+			if (mCode.charAt(i) != '.' && mCode.charAt(i) != '-' && mCode.charAt(i) != ' ' && mCode.charAt(i) != '/') {
+				mCode = mCode.substring(0, i);
+				if(i < lastIndex){
+					mCode = mCode + "!";
+				}
+				break;
+			}
+		}
+		return mCode;
+	}
+
+	private String findLetter(String mletter) {
+		boolean isCompleteMLetter = true;
 		treeNode target = tree.get(0);
-		for (int i = 0; i < letter.length(); i++) {
-			if (letter.charAt(i) == '.') {
-				target = target.left;
-			} else {
-				target = target.right;
+		for (int i = 0; i < mletter.length(); i++) {
+			if (mletter.charAt(i) == '.') {
+				if (target.left != null) {
+					target = target.left;
+				} else {
+					return "?";
+				}
+			} else if(mletter.charAt(i) == '-'){
+				if (target.right != null) {
+					target = target.right;
+				} else {
+					return "?";
+				}
+			}else{
+				if(mletter.charAt(mletter.length()-1)=='!'){
+					isCompleteMLetter = false;
+				}
 			}
 		}
 		if (target.val.equals("start")) {
-			return "";
+			if(isCompleteMLetter){
+				return "";
+			}else{
+				return "?";
+			}
 		} else {
-			return target.val;
+			if(isCompleteMLetter){
+				return target.val;
+			}else{
+				return target.val + " ?";
+			}
 		}
 	}
 
-	private String findMCode(String oneletter){
+	private String findMCode(String oneletter) {
+		// check if oneletter is a space
+		if (oneletter.equals(" ")) {
+			return " / ";
+		}
+
+		// otherwise find the morse code of oneletter
 		String answer = "";
 		treeNode target = tree.get(0);
-		for(int i = 1; i < 27; i++){
+		for (int i = 1; i < 27; i++) {
 			target = tree.get(i);
-			if(target.getVal().equals(oneletter)){
-				if(target.isLeftChild()){
+			if (target.getVal().equals(oneletter)) {
+				if (target.isLeftChild()) {
 					answer = answer + ".";
 					break;
-				}else{
+				} else {
 					answer = answer + "-";
 					break;
 				}
 			}
 		}
-		if(answer.equals("")){
-			return "!";
-		}else{
-			while(target.getParent() != null && !target.getParent().getVal().equals("start")){
+		// if no matching morse code, return ?
+		if (answer.equals("")) {
+			return "?";
+		} else {
+			while (target.getParent() != null && !target.getParent().getVal().equals("start")) {
 				target = target.getParent();
-				if(target.isLeftChild()){
+				if (target.isLeftChild()) {
 					answer = "." + answer;
-				}else{
+				} else {
 					answer = "-" + answer;
 				}
-			}//end while loop
-		}//end if-else
-		
+			} // end while loop
+		} // end if-else
+
 		return answer;
 	}
+
 	class treeNode {
 
 		private treeNode parent, left, right;
